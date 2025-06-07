@@ -50,6 +50,21 @@ cd my-turborepo
 pnpm dev
 ```
 
+### Test
+
+To run all tests in the monorepo, use:
+
+```
+cd my-turborepo
+pnpm test
+```
+
+Generate a coverage report with:
+
+```
+pnpm test:coverage
+```
+
 ### Remote Caching
 
 > [!TIP]
