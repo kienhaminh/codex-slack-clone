@@ -1,0 +1,15 @@
+node_modules
+.pnpm
+.pnpm-global
+.git
+.gitignore
+*.log
+.next
+out
+dist
+build
+.turbo
+.vscode
+.env
+.env.*
+coverage
