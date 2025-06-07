@@ -44,6 +44,7 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+Swagger UI available at http://localhost:3000/api once the server is running.
 
 ## Test
 
