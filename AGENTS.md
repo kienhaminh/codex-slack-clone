@@ -32,7 +32,7 @@ This project is a **Slack-clone application** designed to support **1 million co
 | Layer           | Tech Stack                                     |
 |-----------------|-----------------------------------------------|
 | Frontend        | Next.js (TypeScript), React, Turbo monorepo    |
-| Backend         | NestJS (TypeScript), Prisma ORM, WebSocket API |
+| Backend         | NestJS (TypeScript), Drizzle ORM, WebSocket API |
 | Database        | PostgreSQL                                     |
 | Caching         | Redis (pub/sub, caching, queues)               |
 | Streaming / RTC | WebRTC + SFU                                   |
