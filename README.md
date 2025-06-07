@@ -50,6 +50,26 @@ cd my-turborepo
 pnpm dev
 ```
 
+## Docker
+
+Build a local development image with:
+
+```bash
+docker build -t slack-clone .
+```
+
+Run the container:
+
+```bash
+docker run --env-file .env -p 3000:3000 slack-clone
+```
+
+Start all services with Docker Compose:
+
+```bash
+docker compose up --build
+```
+
 ### Remote Caching
 
 > [!TIP]
