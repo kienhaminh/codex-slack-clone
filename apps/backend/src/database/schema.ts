@@ -16,6 +16,7 @@ export const users = pgTable('users', {
   passwordHash: text('password_hash'),
   googleId: varchar('google_id', { length: 255 }),
   name: text('name').notNull(),
+  avatarUrl: text('avatar_url'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

@@ -74,6 +74,7 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s",
       "!**/auth.repo.ts",
+      "!**/user.repo.ts",
       "!**/schema.ts",
       "!**/jwt.ts",
       "!**/auth.controller.ts",

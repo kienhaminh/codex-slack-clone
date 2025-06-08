@@ -29,6 +29,7 @@ export function createAuthService(repo: AuthRepository, secret: string) {
       email,
       passwordHash: hash(password),
       name,
+      avatarUrl: null,
     });
     return createTokens(user.id);
   }

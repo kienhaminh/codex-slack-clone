@@ -14,7 +14,7 @@ describe('createAuthService', () => {
   beforeEach(() => {
     repo = {
       findUserByEmail: jest.fn(),
-      insertUser: jest.fn(async (d) => ({ id: 1, googleId: null, ...d })),
+      insertUser: jest.fn(async (d) => ({ id: 1, googleId: null, avatarUrl: null, ...d })),
       createSession: jest.fn(async (d) => ({ id: '1', ...d } as Session)),
       findSessionByTokenHash: jest.fn(),
       deleteSession: jest.fn(),
@@ -42,6 +42,7 @@ describe('createAuthService', () => {
       name: 'A',
       passwordHash: 'x',
       googleId: null,
+      avatarUrl: null,
     });
     await expect(service.register('a@test.com', 'p', 'A')).rejects.toThrow(
       'Email already taken',
@@ -56,6 +57,7 @@ describe('createAuthService', () => {
       passwordHash:
         '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08',
       googleId: null,
+      avatarUrl: null,
     });
     const tokens = await service.login('a@test.com', 'test');
     expect(tokens.refreshToken).toBeDefined();
@@ -63,7 +65,9 @@ describe('createAuthService', () => {
 
   it('rejects invalid credentials when user missing', async () => {
     repo.findUserByEmail.mockResolvedValueOnce(undefined);
-    await expect(service.login('missing@test.com', 'p')).rejects.toThrow('Invalid credentials');
+    await expect(service.login('missing@test.com', 'p')).rejects.toThrow(
+      'Invalid credentials',
+    );
   });
 
   it('rejects invalid credentials with wrong password', async () => {
@@ -73,8 +77,11 @@ describe('createAuthService', () => {
       name: 'A',
       passwordHash: sha256('pass'),
       googleId: null,
+      avatarUrl: null,
     });
-    await expect(service.login('a@test.com', 'wrong')).rejects.toThrow('Invalid credentials');
+    await expect(service.login('a@test.com', 'wrong')).rejects.toThrow(
+      'Invalid credentials',
+    );
   });
 
   it('logs out existing session', async () => {
@@ -128,6 +135,7 @@ describe('createAuthService', () => {
       name: 'A',
       passwordHash: 'x',
       googleId: null,
+      avatarUrl: null,
     });
     await service.forgotPassword('a@test.com');
     expect(repo.createPasswordReset).toHaveBeenCalled();
