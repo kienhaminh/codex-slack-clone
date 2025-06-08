@@ -1,12 +1,13 @@
 /* istanbul ignore file */
 import { Module } from '@nestjs/common';
-import { DB } from '../database/database.module';
+import { DB, DatabaseModule } from '../database/database.module';
 import { AuthController } from './auth.controller';
 import { AUTH_SERVICE } from './auth.tokens';
 import { createAuthService } from './auth.service';
 import { createAuthRepository } from './auth.repo';
 
 @Module({
+  imports: [DatabaseModule],
   controllers: [AuthController],
   providers: [
     {
