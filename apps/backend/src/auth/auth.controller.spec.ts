@@ -39,6 +39,25 @@ describe('AuthController', () => {
     expect(service.logout).toHaveBeenCalledWith('r');
   });
 
+  it('calls refresh on service', () => {
+    controller.refresh({ refreshToken: 'r2' });
+    expect(service.refresh).toHaveBeenCalledWith('r2');
+  });
+
+  it('calls forgotPassword on service', () => {
+    controller.forgotPassword({ email: 'e2' });
+    expect(service.forgotPassword).toHaveBeenCalledWith('e2');
+  });
+
+  it('calls changePassword on service', () => {
+    controller.changePassword({ token: 't', newPassword: 'n' });
+    expect(service.changePassword).toHaveBeenCalledWith('t', 'n');
+  });
+
+  it('throws for unimplemented google', () => {
+    expect(() => controller.google()).toThrow('Not implemented');
+  });
+
   it('returns user id from request in me()', () => {
     const result = controller.me({ userId: 1 } as any);
     expect(result).toEqual({ userId: 1 });

@@ -33,4 +33,15 @@ describe('AuthGuard', () => {
     expect(service.verifyAuthHeader).toHaveBeenCalledWith('Bearer token');
     expect(req.userId).toBe(1);
   });
+
+  it('throws when verifyAuthHeader fails', () => {
+    service.verifyAuthHeader.mockImplementationOnce(() => {
+      throw new Error('bad');
+    });
+    const req = { headers: { authorization: 'x' } } as any;
+    const context = {
+      switchToHttp: () => ({ getRequest: () => req }),
+    } as unknown as ExecutionContext;
+    expect(() => guard.canActivate(context)).toThrow('bad');
+  });
 });
