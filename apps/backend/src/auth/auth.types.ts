@@ -4,6 +4,7 @@ export interface User {
   passwordHash: string | null;
   googleId: string | null;
   name: string;
+  avatarUrl: string | null;
 }
 
 export interface Session {
