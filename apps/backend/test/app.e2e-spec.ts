@@ -9,7 +9,9 @@ describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
-    const redisService = new RedisService(new (RedisMock as unknown as { new (): any })());
+    const redisService = new RedisService(
+      new (RedisMock as unknown as { new (): any })(),
+    );
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     })
