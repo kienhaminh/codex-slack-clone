@@ -8,7 +8,9 @@ describe('AppController', () => {
   let appController: AppController;
 
   beforeEach(async () => {
-    const redisService = new RedisService(new (RedisMock as unknown as { new (): any })());
+    const redisService = new RedisService(
+      new (RedisMock as unknown as { new (): any })(),
+    );
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
       providers: [
